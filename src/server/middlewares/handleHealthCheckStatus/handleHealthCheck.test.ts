@@ -1,20 +1,21 @@
 import { Request, Response } from "express";
 import handleHealthCheckStatus from "./handleHealthCheckStatus.js";
+import statusCodes from "../../../globals/statusCodes.js";
 
 describe("Given the handleHealthCheckStatus middleware", () => {
   describe("When it receives a response", () => {
     const req = {} as Request;
-    const res = {
+    const res: Pick<Response, "status" | "json"> = {
       status: jest.fn().mockReturnThis(),
       json: jest.fn(),
-    } as Pick<Response, "status" | "json">;
+    };
 
     beforeEach(() => {
       jest.clearAllMocks();
     });
 
     test("Then it should call the received response's method status with 200", () => {
-      const expectedStatus = 200;
+      const expectedStatus = statusCodes.OK;
 
       handleHealthCheckStatus(req, res as Response);
 
