@@ -5,6 +5,8 @@ import handleErrors from "./middlewares/handleErrors/handleErrors.js";
 
 const app = express();
 
+app.disable("x-powered-by");
+
 app.use(morgan("dev"));
 
 app.get("/", handleHealthCheckStatus);
