@@ -45,6 +45,9 @@ const restaurantSchema = new Schema<RestaurantStructure>({
   rating: {
     type: Number,
   },
+  visitDate: {
+    type: Date,
+  },
 });
 
 const Restaurant = model("Restaurant", restaurantSchema, "restaurants");
