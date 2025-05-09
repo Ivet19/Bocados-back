@@ -2,9 +2,6 @@ name: Testing
 
 on: push
 
-env:
-  ALLOWED_ORIGIN_PATTERNS: ${{ vars.ALLOWED_ORIGIN_PATTERNS}}
-
 jobs:
   test:
     name: Tests passes
