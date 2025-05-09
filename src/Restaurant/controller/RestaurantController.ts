@@ -8,7 +8,7 @@ import statusCodes from "../../globals/statusCodes.js";
 import RestaurantStructure from "../types.js";
 
 export class RestaurantController implements RestaurantControllerStructure {
-  constructor(private postModel: Model<RestaurantStructure>) {}
+  constructor(private readonly postModel: Model<RestaurantStructure>) {}
 
   public getRestaurants = async (
     req: RestaurantRequest,
