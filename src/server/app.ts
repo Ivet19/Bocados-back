@@ -3,7 +3,7 @@ import morgan from "morgan";
 import handleHealthCheckStatus from "./middlewares/handleHealthCheckStatus/handleHealthCheckStatus.js";
 import handleErrors from "./middlewares/handleErrors/handleErrors.js";
 import handleEndpointNotFound from "./middlewares/handleEndpointNotFound/handleEndpointNotFound.js";
-import RestaurantController from "../restaurant/controller/RestaurantController.js";
+import { RestaurantController } from "../restaurant/controller/RestaurantController.js";
 import Restaurant from "../restaurant/model/Restaurant.js";
 
 const app = express();

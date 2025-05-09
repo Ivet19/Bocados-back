@@ -7,7 +7,7 @@ import {
 import statusCodes from "../../globals/statusCodes.js";
 import RestaurantStructure from "../types.js";
 
-class RestaurantController implements RestaurantControllerStructure {
+export class RestaurantController implements RestaurantControllerStructure {
   constructor(private postModel: Model<RestaurantStructure>) {}
 
   public getRestaurants = async (
@@ -34,5 +34,3 @@ class RestaurantController implements RestaurantControllerStructure {
       .json({ restaurants: restaurants, restaurantsTotal: restaurantsTotal });
   };
 }
-
-export default RestaurantController;
