@@ -1,7 +1,7 @@
 import RestaurantStructure from "./types.js";
 
-export const losPollosHermanos = {
-  _id: "1",
+export const losPollosHermanos: RestaurantStructure = {
+  _id: "663b7989f2a43e9f4c5c0a01",
   name: "Los Pollos Hermanos",
   adress: "Albuquerque, New Mexico",
   foodType: "Pollos fritos / Fast food",
@@ -17,9 +17,9 @@ export const losPollosHermanos = {
   visitDate: new Date("2023-05-12"),
 };
 
-export const monksCafe = {
-  _id: "2",
-  name: "Monk's Café",
+export const monksCafe: RestaurantStructure = {
+  _id: "663b7989f2a43e9f4c5c0a02",
+  name: "Monk's Cafe",
   adress: "West 112th Street, Nueva York",
   foodType: "Diner Americano",
   imageUrl: "https://example.com/monks-cafe.jpg",
@@ -28,8 +28,8 @@ export const monksCafe = {
   isVisited: false,
 };
 
-export const centralPerk = {
-  _id: "3",
+export const centralPerk: RestaurantStructure = {
+  _id: "663b7989f2a43e9f4c5c0a03",
   name: "Central Perk",
   adress: "Greenwich Village, Nueva York",
   foodType: "Café y pastelería",
@@ -45,8 +45,8 @@ export const centralPerk = {
   visitDate: new Date("2023-03-17"),
 };
 
-export const jjsDinner = {
-  _id: "4",
+export const jjsDinner: RestaurantStructure = {
+  _id: "663b7989f2a43e9f4c5c0a04",
   name: "JJ's Diner",
   adress: "Pawnee, Indiana",
   foodType: "Desayunos",
@@ -62,8 +62,8 @@ export const jjsDinner = {
   visitDate: new Date("2022-11-09"),
 };
 
-export const freddysBbq = {
-  _id: "5",
+export const freddysBbq: RestaurantStructure = {
+  _id: "663b7989f2a43e9f4c5c0a05",
   name: "Freddy's BBQ Joint",
   adress: "Washington D.C.",
   foodType: "Barbacoa",
@@ -79,8 +79,8 @@ export const freddysBbq = {
   visitDate: new Date("2023-06-30"),
 };
 
-export const bobsBurgers = {
-  _id: "6",
+export const bobsBurgers: RestaurantStructure = {
+  _id: "663b7989f2a43e9f4c5c0a06",
   name: "Bob's Burgers",
   adress: "Ocean Avenue, USA",
   foodType: "Hamburguesas",
