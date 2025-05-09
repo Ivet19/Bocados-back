@@ -1,5 +1,5 @@
 import { model, Schema } from "mongoose";
-import { RestaurantStructure } from "../types.js";
+import RestaurantStructure from "../types.js";
 
 const restaurantSchema = new Schema<RestaurantStructure>({
   name: {
@@ -28,15 +28,19 @@ const restaurantSchema = new Schema<RestaurantStructure>({
   },
   servingsAmount: {
     type: String,
+    enum: ["Poca", "Normal", "Generosa"],
   },
   waitTime: {
     type: String,
+    enum: ["Poco", "Normal", "Mucho"],
   },
   customerService: {
     type: String,
+    enum: ["Muy malo", "Malo", "Regular", "Bueno", "Muy bueno"],
   },
   priceCategory: {
     type: String,
+    enum: ["Bajo", "Medio", "Alto"],
   },
   rating: {
     type: Number,

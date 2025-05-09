@@ -1,4 +1,4 @@
-export interface RestaurantStructure {
+interface RestaurantStructure {
   _id: string;
   name: string;
   adress: string;
@@ -6,10 +6,20 @@ export interface RestaurantStructure {
   imageUrl: string;
   description: string;
   isVisited: boolean;
-  servingsAmount?: string;
-  waitTime: string;
-  customerService: string;
-  priceCategory: string;
-  rating: 5;
+  servingsAmount?: ServingsAmmount;
+  waitTime?: WaitTime;
+  customerService?: CustomerService;
+  priceCategory?: PriceCategory;
+  rating?: 5;
   visitDate: Date;
 }
+
+type ServingsAmmount = "Poca" | "Normal" | "Generosa";
+
+type WaitTime = "Poco" | "Normal" | "Mucho";
+
+type CustomerService = "Muy malo" | "Malo" | "Regular" | "Bueno" | "Muy bueno'";
+
+type PriceCategory = "Bajo" | "Medio" | "Alto";
+
+export default RestaurantStructure;
