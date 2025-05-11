@@ -5,6 +5,10 @@ on:
       - main
   pull_request:
     types: [opened, synchronize, reopened]
+
+env:
+  ALLOWED_ORIGIN_PATTERNS: ${{ vars.ALLOWED_ORIGIN_PATTERNS}}
+
 jobs:
   sonarcloud:
     name: SonarCloud
