@@ -4,8 +4,11 @@ import handleHealthCheckStatus from "./middlewares/handleHealthCheckStatus/handl
 import handleErrors from "./middlewares/handleErrors/handleErrors.js";
 import handleEndpointNotFound from "./middlewares/handleEndpointNotFound/handleEndpointNotFound.js";
 import restaurantsRouter from "../restaurant/router/restaurantsRouter.js";
+import handleCorsAllowedOrigins from "./middlewares/handleCorsAllowedOrigins/handleCorsAllowedOrigins.js";
 
 const app = express();
+
+app.use(handleCorsAllowedOrigins);
 
 app.disable("x-powered-by");
 
