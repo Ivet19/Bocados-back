@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { RestaurantController } from "../controller/RestaurantController.js";
+import RestaurantController from "../controller/RestaurantController.js";
 import Restaurant from "../model/Restaurant.js";
 
 const restaurantsRouter = Router();

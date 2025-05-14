@@ -2,7 +2,7 @@ import { Model } from "mongoose";
 import { Request, Response } from "express";
 import { restaurantFixtures } from "../../fixtures.js";
 import RestaurantStructure from "../../types.js";
-import { RestaurantController } from "../RestaurantController.js";
+import RestaurantController from "../RestaurantController.js";
 import { RestaurantRequest } from "../types.js";
 
 let originalRestaurantFixtures = [...restaurantFixtures];
