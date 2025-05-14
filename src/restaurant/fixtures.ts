@@ -17,6 +17,23 @@ export const losPollosHermanos: RestaurantStructure = {
   visitDate: new Date("2023-05-12"),
 };
 
+export const notVisitedLosPollosHermanos: RestaurantStructure = {
+  _id: "663b7989f2a43e9f4c5c0a01",
+  name: "Los Pollos Hermanos",
+  adress: "Albuquerque, New Mexico",
+  foodType: "Pollos fritos / Fast food",
+  imageUrl: "https://example.com/los-pollos.jpg",
+  description:
+    "Famoso por su pollo crujiente y limpio ambiente familiar. Ideal para quienes valoran la eficiencia y la precisión... en todos los sentidos.",
+  isVisited: false,
+  servingsAmount: "Generosa",
+  waitTime: "Poco",
+  customerService: "Muy bueno",
+  priceCategory: "Medio",
+  rating: 4.2,
+  visitDate: new Date("2023-05-12"),
+};
+
 export const monksCafe: RestaurantStructure = {
   _id: "663b7989f2a43e9f4c5c0a02",
   name: "Monk's Cafe",
@@ -88,6 +105,17 @@ export const bobsBurgers: RestaurantStructure = {
   description:
     "Restaurante familiar con un dueño muy excéntrico y recetas semanales únicas. Las hamburguesas son tan buenas como raras.",
   isVisited: false,
+};
+
+export const visitedBobsBurgers: RestaurantStructure = {
+  _id: "663b7989f2a43e9f4c5c0a06",
+  name: "Bob's Burgers",
+  adress: "Ocean Avenue, USA",
+  foodType: "Hamburguesas",
+  imageUrl: "https://example.com/bobs-burgers.jpg",
+  description:
+    "Restaurante familiar con un dueño muy excéntrico y recetas semanales únicas. Las hamburguesas son tan buenas como raras.",
+  isVisited: true,
 };
 
 export const restaurantFixtures: RestaurantStructure[] = [

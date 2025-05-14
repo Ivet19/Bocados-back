@@ -16,9 +16,15 @@ export type RestaurantQuery = {
   page: string;
 };
 
-export type RestaurantResponse = Response<ResBody>;
+export type RestaurantsResponse = Response<GetRestaurantsResBody>;
 
-export type ResBody = {
+export type GetRestaurantsResBody = {
   restaurants: RestaurantStructure[];
   restaurantsTotal: number;
+};
+
+export type ToggledRestaurantResponse = Response<ToggleRestaurantResBody>;
+
+export type ToggleRestaurantResBody = {
+  restaurant: RestaurantStructure;
 };

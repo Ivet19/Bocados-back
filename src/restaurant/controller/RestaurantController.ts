@@ -1,18 +1,21 @@
 import { Model } from "mongoose";
+import { NextFunction } from "express";
 import {
   RestaurantControllerStructure,
   RestaurantRequest,
-  RestaurantResponse,
+  RestaurantsResponse,
+  ToggledRestaurantResponse,
 } from "./types.js";
 import statusCodes from "../../globals/statusCodes.js";
 import RestaurantStructure from "../types.js";
+import ServerError from "../../server/ServerError/ServerError.js";
 
-export class RestaurantController implements RestaurantControllerStructure {
-  constructor(private readonly postModel: Model<RestaurantStructure>) {}
+class RestaurantController implements RestaurantControllerStructure {
+  constructor(private readonly restaurantModel: Model<RestaurantStructure>) {}
 
   public getRestaurants = async (
     req: RestaurantRequest,
-    res: RestaurantResponse,
+    res: RestaurantsResponse,
   ): Promise<void> => {
     let page = req.query.page;
 
@@ -20,9 +23,9 @@ export class RestaurantController implements RestaurantControllerStructure {
       page = "1";
     }
 
-    const restaurantsTotal = await this.postModel.countDocuments();
+    const restaurantsTotal = await this.restaurantModel.countDocuments();
 
-    const restaurants = await this.postModel
+    const restaurants = await this.restaurantModel
       .find()
       .sort({ name: "asc" })
       .skip((Number(page) - 1) * 5)
@@ -33,4 +36,48 @@ export class RestaurantController implements RestaurantControllerStructure {
       .status(statusCodes.OK)
       .json({ restaurants: restaurants, restaurantsTotal: restaurantsTotal });
   };
+
+  public toggleRestaurantById = async (
+    req: RestaurantRequest,
+    res: ToggledRestaurantResponse,
+    next: NextFunction,
+  ): Promise<void> => {
+    const restaurantId = req.params.restaurantId;
+
+    const restaurant = await this.restaurantModel.findById(restaurantId).exec();
+
+    if (!restaurant) {
+      const error = new ServerError(
+        statusCodes.NOT_FOUND,
+        "This restaurant doesn't exist",
+      );
+
+      next(error);
+
+      return;
+    }
+
+    const updatedRestaurant = await this.restaurantModel
+      .findByIdAndUpdate(
+        restaurantId,
+        { isVisited: !restaurant.isVisited },
+        { new: true },
+      )
+      .exec();
+
+    if (!updatedRestaurant) {
+      const error = new ServerError(
+        statusCodes.BAD_REQUEST,
+        "Error updating restaurant",
+      );
+
+      next(error);
+
+      return;
+    }
+
+    res.status(200).json({ restaurant: updatedRestaurant });
+  };
 }
+
+export default RestaurantController;
