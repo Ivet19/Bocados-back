@@ -118,6 +118,40 @@ export const visitedBobsBurgers: RestaurantStructure = {
   isVisited: true,
 };
 
+export const krustyBurger: RestaurantStructure = {
+  _id: "664371df9c0e9b2a1f7d88c7",
+  name: "Krusty Burger",
+  adress: "Springfield, USA",
+  foodType: "Comida rápida",
+  imageUrl: "https://example.com/krusty-burger.jpg",
+  description:
+    "La hamburguesa preferida de Springfield. No esperes comida saludable, pero sí mucho sabor (y probablemente algo de sarcasmo).",
+  isVisited: true,
+  servingsAmount: "Generosa",
+  waitTime: "Poco",
+  customerService: "Regular",
+  priceCategory: "Bajo",
+  rating: 3.8,
+  visitDate: new Date("2023-10-18"),
+};
+
+export const notVisitedKrustyBurger: RestaurantStructure = {
+  _id: "664371df9c0e9b2a1f7d88c7",
+  name: "Krusty Burger",
+  adress: "Springfield, USA",
+  foodType: "Comida rápida",
+  imageUrl: "https://example.com/krusty-burger.jpg",
+  description:
+    "La hamburguesa preferida de Springfield. No esperes comida saludable, pero sí mucho sabor (y probablemente algo de sarcasmo).",
+  isVisited: false,
+  servingsAmount: "Generosa",
+  waitTime: "Poco",
+  customerService: "Regular",
+  priceCategory: "Bajo",
+  rating: 3.8,
+  visitDate: new Date("2023-10-18"),
+};
+
 export const restaurantFixtures: RestaurantStructure[] = [
   losPollosHermanos,
   monksCafe,
