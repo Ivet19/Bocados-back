@@ -6,6 +6,11 @@ const restaurantsRouter = Router();
 
 const restaurantController = new RestaurantController(Restaurant);
 
+restaurantsRouter.patch(
+  "/visit-restaurant/:restaurantId",
+  restaurantController.toggleRestaurantById,
+);
+
 restaurantsRouter.get("/", restaurantController.getRestaurants);
 
 export default restaurantsRouter;
