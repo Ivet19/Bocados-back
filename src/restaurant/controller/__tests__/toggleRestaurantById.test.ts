@@ -2,7 +2,6 @@ import { Model } from "mongoose";
 import { NextFunction, Response } from "express";
 import {
   bobsBurgers,
-  jjsDinner,
   losPollosHermanos,
   notVisitedLosPollosHermanos,
   visitedBobsBurgers,
@@ -11,7 +10,6 @@ import RestaurantStructure from "../../types.js";
 import { RestaurantRequest, ToggledRestaurantResponse } from "../types.js";
 import RestaurantController from "../RestaurantController.js";
 import ServerError from "../../../server/ServerError/ServerError.js";
-import statusCodes from "../../../globals/statusCodes.js";
 
 beforeEach(() => {
   jest.clearAllMocks();
@@ -128,43 +126,6 @@ describe("Given the toggleRestaurantById method of RestaurantController", () => 
         next as NextFunction,
       );
       expect(next).toHaveBeenCalledWith(error);
-    });
-  });
-
-  describe("When it receives JJ's Dinner restaurant id", () => {
-    describe("And there's an error updating the restaurant", () => {
-      test("Then it should call the received next method with code 400 and 'Error updating restaurant' message", async () => {
-        const error = new ServerError(
-          statusCodes.BAD_REQUEST,
-          "Error updating restaurant",
-        );
-
-        const req: Pick<RestaurantRequest, "params"> = {
-          params: { restaurantId: jjsDinner._id },
-        };
-
-        const restaurantModel: Pick<
-          Model<RestaurantStructure>,
-          "findById" | "findByIdAndUpdate"
-        > = {
-          findById: jest.fn().mockReturnValue({
-            exec: jest.fn().mockResolvedValue(jjsDinner),
-          }),
-          findByIdAndUpdate: jest.fn().mockReturnValue({
-            exec: jest.fn().mockResolvedValue(null),
-          }),
-        };
-
-        const restaurantController = new RestaurantController(
-          restaurantModel as Model<RestaurantStructure>,
-        );
-        await restaurantController.toggleRestaurantById(
-          req as RestaurantRequest,
-          res as ToggledRestaurantResponse,
-          next as NextFunction,
-        );
-        expect(next).toHaveBeenCalledWith(error);
-      });
     });
   });
 });

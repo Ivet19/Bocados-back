@@ -33,10 +33,8 @@ describe("Given the PATCH /restaurants/visit-restaurant/:restaurantId endpoint",
 
       expect(notVisitedRestaurant.isVisited).toBe(false);
 
-      const id = notVisitedKrustyBurger._id;
-
       const response = await request(app).patch(
-        `/restaurants/visit-restaurant/${id}`,
+        `/restaurants/visit-restaurant/${notVisitedKrustyBurger._id}`,
       );
 
       const body = response.body as ToggleRestaurantResBody;
