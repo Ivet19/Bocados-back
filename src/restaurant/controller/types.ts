@@ -6,7 +6,7 @@ export interface RestaurantControllerStructure {
 }
 
 export type RestaurantRequest = Request<
-  Record<string, unknown>,
+  RestaurantParams,
   Record<string, unknown>,
   Record<string, unknown>,
   RestaurantQuery
@@ -14,6 +14,10 @@ export type RestaurantRequest = Request<
 
 export type RestaurantQuery = {
   page: string;
+};
+
+export type RestaurantParams = {
+  restaurantId: string;
 };
 
 export type RestaurantsResponse = Response<GetRestaurantsResBody>;

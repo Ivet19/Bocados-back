@@ -42,7 +42,7 @@ class RestaurantController implements RestaurantControllerStructure {
     res: ToggledRestaurantResponse,
     next: NextFunction,
   ): Promise<void> => {
-    const restaurantId = req.params.restaurantId;
+    const { restaurantId } = req.params;
 
     const restaurant = await this.restaurantModel.findById(restaurantId).exec();
 
@@ -65,18 +65,7 @@ class RestaurantController implements RestaurantControllerStructure {
       )
       .exec();
 
-    if (!updatedRestaurant) {
-      const error = new ServerError(
-        statusCodes.BAD_REQUEST,
-        "Error updating restaurant",
-      );
-
-      next(error);
-
-      return;
-    }
-
-    res.status(200).json({ restaurant: updatedRestaurant });
+    res.status(200).json({ restaurant: updatedRestaurant! });
   };
 }
 
