@@ -14,6 +14,8 @@ app.disable("x-powered-by");
 
 app.use(morgan("dev"));
 
+app.use(express.json());
+
 app.get("/", handleHealthCheckStatus);
 
 app.use("/restaurants", restaurantsRouter);
