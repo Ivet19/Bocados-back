@@ -1,3 +1,4 @@
+import { ReqBodyRestaurantData } from "./controller/types.js";
 import RestaurantStructure from "./types.js";
 
 export const losPollosHermanos: RestaurantStructure = {
@@ -79,6 +80,22 @@ export const jjsDinner: RestaurantStructure = {
   visitDate: new Date("2022-11-09"),
 };
 
+export const freddysBbqData: ReqBodyRestaurantData = {
+  name: "Freddy's BBQ Joint",
+  adress: "Washington D.C.",
+  foodType: "Barbacoa",
+  imageUrl: "https://example.com/freddys-bbq.jpg",
+  description:
+    "Un lugar discreto para comer costillas con las manos... incluso si eres el presidente.",
+  isVisited: true,
+  servingsAmount: "Generosa",
+  waitTime: "Normal",
+  customerService: "Bueno",
+  priceCategory: "Medio",
+  rating: 4,
+  visitDate: "2023-06-30",
+};
+
 export const freddysBbq: RestaurantStructure = {
   _id: "663b7989f2a43e9f4c5c0a05",
   name: "Freddy's BBQ Joint",
@@ -150,6 +167,60 @@ export const notVisitedKrustyBurger: RestaurantStructure = {
   priceCategory: "Bajo",
   rating: 3.8,
   visitDate: new Date("2023-10-18"),
+};
+
+export const souvlakiExpressData: ReqBodyRestaurantData = {
+  name: "Souvlaki Express",
+  adress: "Atenas, Grecia",
+  foodType: "Comida griega / Rápida",
+  imageUrl: "https://example.com/souvlaki-express.jpg",
+  description:
+    "Perfecto para amantes del gyro y el souvlaki. Rápido, sabroso y con ese toque mediterráneo que nunca falla.",
+  isVisited: false,
+};
+
+export const souvlakiExpress: RestaurantStructure = {
+  _id: "665000abc1234def56789000",
+  name: "Souvlaki Express",
+  adress: "Atenas, Grecia",
+  foodType: "Comida griega / Rápida",
+  imageUrl: "https://example.com/souvlaki-express.jpg",
+  description:
+    "Perfecto para amantes del gyro y el souvlaki. Rápido, sabroso y con ese toque mediterráneo que nunca falla.",
+  isVisited: false,
+};
+
+export const theLotusLanternData: ReqBodyRestaurantData = {
+  name: "The Lotus Lantern",
+  adress: "Kyoto, Japón",
+  foodType: "Fusión asiática",
+  imageUrl: "https://example.com/lotus-lantern.jpg",
+  description:
+    "Un rincón tranquilo donde la cocina japonesa se mezcla con sabores tailandeses. Ideal para una cena relajada y refinada.",
+  isVisited: true,
+  servingsAmount: "Normal",
+  waitTime: "Normal",
+  customerService: "Muy bueno",
+  priceCategory: "Alto",
+  rating: 4.7,
+  visitDate: "2024-02-18",
+};
+
+export const theLotusLantern: RestaurantStructure = {
+  _id: "665000abc1234def56789001",
+  name: "The Lotus Lantern",
+  adress: "Kyoto, Japón",
+  foodType: "Fusión asiática",
+  imageUrl: "https://example.com/lotus-lantern.jpg",
+  description:
+    "Un rincón tranquilo donde la cocina japonesa se mezcla con sabores tailandeses. Ideal para una cena relajada y refinada.",
+  isVisited: true,
+  servingsAmount: "Normal",
+  waitTime: "Normal",
+  customerService: "Muy bueno",
+  priceCategory: "Alto",
+  rating: 4.7,
+  visitDate: new Date("2024-02-18"),
 };
 
 export const restaurantFixtures: RestaurantStructure[] = [

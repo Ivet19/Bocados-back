@@ -97,7 +97,7 @@ Returns a paginated list of restaurants (5 per page), sorted by name in ascendin
 ### 🔄 Toggle `isVisited` status of a restaurant
 
 - **Request type:** `RestaurantRequest` (params: `restaurantId: string`)
-- **Response type:** `ToggledRestaurantResponse` (body: `ToggleRestaurantResBody`)
+- **Response type:** `ToggledRestaurantResponse` (body: `RestaurantResBody`)
 
 Toggles the `isVisited` value (from `true` to `false` or vice versa) of a restaurant based on its ID.
 
