@@ -15,4 +15,6 @@ restaurantsRouter.patch(
   restaurantController.toggleRestaurantById,
 );
 
+restaurantsRouter.post("/", restaurantController.addRestaurant);
+
 export default restaurantsRouter;

@@ -112,7 +112,7 @@ describe("Given the getRestaurants method of RestaurantController", () => {
       query: { page: pageNumber.toString() },
     } as Pick<Request, "query">;
 
-    const postModel: Pick<
+    const restaurantModel: Pick<
       Model<RestaurantStructure>,
       "find" | "countDocuments"
     > = {
@@ -149,7 +149,7 @@ describe("Given the getRestaurants method of RestaurantController", () => {
         .slice(5, 10);
 
       const restaurantController = new RestaurantController(
-        postModel as Model<RestaurantStructure>,
+        restaurantModel as Model<RestaurantStructure>,
       );
 
       await restaurantController.getRestaurants(
