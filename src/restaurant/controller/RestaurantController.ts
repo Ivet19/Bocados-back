@@ -4,7 +4,7 @@ import {
   RestaurantControllerStructure,
   RestaurantRequest,
   RestaurantsResponse,
-  ToggledRestaurantResponse,
+  RestaurantResponse,
 } from "./types.js";
 import statusCodes from "../../globals/statusCodes.js";
 import RestaurantStructure from "../types.js";
@@ -39,7 +39,7 @@ class RestaurantController implements RestaurantControllerStructure {
 
   public toggleRestaurantById = async (
     req: RestaurantRequest,
-    res: ToggledRestaurantResponse,
+    res: RestaurantResponse,
     next: NextFunction,
   ): Promise<void> => {
     const { restaurantId } = req.params;
@@ -65,7 +65,39 @@ class RestaurantController implements RestaurantControllerStructure {
       )
       .exec();
 
-    res.status(200).json({ restaurant: updatedRestaurant! });
+    res.status(statusCodes.OK).json({ restaurant: updatedRestaurant! });
+  };
+
+  public addRestaurant = async (
+    req: RestaurantRequest,
+    res: RestaurantResponse,
+    next: NextFunction,
+  ): Promise<void> => {
+    const newRestaurantData = req.body;
+
+    const restaurants = await this.restaurantModel.find().exec();
+
+    if (
+      restaurants.some(
+        (restaurant) =>
+          restaurant.name.toLowerCase() ===
+          newRestaurantData.name.toLowerCase(),
+      )
+    ) {
+      const error = new ServerError(
+        statusCodes.CONFLICT,
+        "Restaurant already exists",
+      );
+
+      next(error);
+
+      return;
+    }
+
+    const addedRestaurant =
+      await this.restaurantModel.insertOne(newRestaurantData);
+
+    res.status(statusCodes.CREATED).json({ restaurant: addedRestaurant });
   };
 }
 

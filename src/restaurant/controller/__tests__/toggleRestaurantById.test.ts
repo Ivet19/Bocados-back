@@ -7,7 +7,7 @@ import {
   visitedBobsBurgers,
 } from "../../fixtures.js";
 import RestaurantStructure from "../../types.js";
-import { RestaurantRequest, ToggledRestaurantResponse } from "../types.js";
+import { RestaurantRequest, RestaurantResponse } from "../types.js";
 import RestaurantController from "../RestaurantController.js";
 import ServerError from "../../../server/ServerError/ServerError.js";
 
@@ -49,7 +49,7 @@ describe("Given the toggleRestaurantById method of RestaurantController", () => 
 
       await restaurantController.toggleRestaurantById(
         req as RestaurantRequest,
-        res as ToggledRestaurantResponse,
+        res as RestaurantResponse,
         next as NextFunction,
       );
 
@@ -63,7 +63,7 @@ describe("Given the toggleRestaurantById method of RestaurantController", () => 
 
       await restaurantController.toggleRestaurantById(
         req as RestaurantRequest,
-        res as ToggledRestaurantResponse,
+        res as RestaurantResponse,
         next as NextFunction,
       );
 
@@ -94,7 +94,7 @@ describe("Given the toggleRestaurantById method of RestaurantController", () => 
       );
       await restaurantController.toggleRestaurantById(
         req as RestaurantRequest,
-        res as ToggledRestaurantResponse,
+        res as RestaurantResponse,
         next as NextFunction,
       );
       expect(res.json).toHaveBeenCalledWith({
@@ -122,7 +122,7 @@ describe("Given the toggleRestaurantById method of RestaurantController", () => 
       );
       await restaurantController.toggleRestaurantById(
         req as RestaurantRequest,
-        res as ToggledRestaurantResponse,
+        res as RestaurantResponse,
         next as NextFunction,
       );
       expect(next).toHaveBeenCalledWith(error);

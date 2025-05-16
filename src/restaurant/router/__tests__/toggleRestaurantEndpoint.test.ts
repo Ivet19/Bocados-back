@@ -6,7 +6,7 @@ import app from "../../../server/app.js";
 import statusCodes from "../../../globals/statusCodes.js";
 import Restaurant from "../../model/Restaurant.js";
 import { notVisitedKrustyBurger } from "../../fixtures.js";
-import { ToggleRestaurantResBody } from "../../controller/types.js";
+import { RestaurantResBody } from "../../controller/types.js";
 
 let server: MongoMemoryServer;
 
@@ -37,7 +37,7 @@ describe("Given the PATCH /restaurants/visit-restaurant/:restaurantId endpoint",
         `/restaurants/visit-restaurant/${notVisitedKrustyBurger._id}`,
       );
 
-      const body = response.body as ToggleRestaurantResBody;
+      const body = response.body as RestaurantResBody;
 
       expect(response.status).toBe(statusCodes.OK);
 

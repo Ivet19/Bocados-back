@@ -9,7 +9,7 @@ export interface RestaurantControllerStructure {
 
   toggleRestaurantById: (
     req: RestaurantRequest,
-    res: ToggledRestaurantResponse,
+    res: RestaurantResponse,
     next: NextFunction,
   ) => Promise<void>;
 }
@@ -17,7 +17,7 @@ export interface RestaurantControllerStructure {
 export type RestaurantRequest = Request<
   RestaurantParams,
   Record<string, unknown>,
-  Record<string, unknown>,
+  ReqBodyRestaurantData,
   RestaurantQuery
 >;
 
@@ -29,6 +29,13 @@ export type RestaurantParams = {
   restaurantId: string;
 };
 
+export type ReqBodyRestaurantData = Omit<
+  RestaurantStructure,
+  "_id" | "visitDate"
+> & {
+  visitDate?: string;
+};
+
 export type RestaurantsResponse = Response<GetRestaurantsResBody>;
 
 export type GetRestaurantsResBody = {
@@ -36,8 +43,8 @@ export type GetRestaurantsResBody = {
   restaurantsTotal: number;
 };
 
-export type ToggledRestaurantResponse = Response<ToggleRestaurantResBody>;
+export type RestaurantResponse = Response<RestaurantResBody>;
 
-export type ToggleRestaurantResBody = {
+export type RestaurantResBody = {
   restaurant: RestaurantStructure;
 };
