@@ -1,8 +1,17 @@
-import { Request, Response } from "express";
+import { NextFunction, Request, Response } from "express";
 import RestaurantStructure from "../types.js";
 
 export interface RestaurantControllerStructure {
-  getRestaurants: (req: RestaurantRequest, res: Response) => Promise<void>;
+  getRestaurants: (
+    req: RestaurantRequest,
+    res: RestaurantsResponse,
+  ) => Promise<void>;
+
+  toggleRestaurantById: (
+    req: RestaurantRequest,
+    res: ToggledRestaurantResponse,
+    next: NextFunction,
+  ) => Promise<void>;
 }
 
 export type RestaurantRequest = Request<
