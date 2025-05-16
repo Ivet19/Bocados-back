@@ -1,4 +1,5 @@
 import { NextFunction } from "express";
+import { Model } from "mongoose";
 import {
   freddysBbqData,
   restaurantFixtures,
@@ -7,7 +8,6 @@ import {
 } from "../../fixtures.js";
 import { RestaurantRequest, RestaurantResponse } from "../types.js";
 import RestaurantStructure from "../../types.js";
-import { Model } from "mongoose";
 import RestaurantController from "../RestaurantController.js";
 import statusCodes from "../../../globals/statusCodes.js";
 import ServerError from "../../../server/ServerError/ServerError.js";

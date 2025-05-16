@@ -25,10 +25,12 @@ class RestaurantController implements RestaurantControllerStructure {
 
     const restaurantsTotal = await this.restaurantModel.countDocuments();
 
+    const restaurantsByPageTotal = 5;
+
     const restaurants = await this.restaurantModel
       .find()
       .sort({ name: "asc" })
-      .skip((Number(page) - 1) * 5)
+      .skip((Number(page) - 1) * restaurantsByPageTotal)
       .limit(5)
       .exec();
 
