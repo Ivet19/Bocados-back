@@ -17,7 +17,7 @@ class RestaurantController implements RestaurantControllerStructure {
     req: RestaurantRequest,
     res: RestaurantsResponse,
   ): Promise<void> => {
-    let page = req.query.page;
+    let { page } = req.query;
 
     if (!page) {
       page = "1";
