@@ -83,7 +83,7 @@ describe("Given the addRestaurant method of RestaurantController", () => {
           find: jest.fn().mockReturnValue({
             exec: jest.fn().mockResolvedValue(restaurantFixtures),
           }),
-          insertOne: jest.fn().mockResolvedValue(souvlakiExpressData),
+          insertOne: jest.fn().mockResolvedValue(freddysBbqData),
         };
 
         const error = new ServerError(

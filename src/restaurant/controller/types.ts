@@ -17,7 +17,7 @@ export interface RestaurantControllerStructure {
 export type RestaurantRequest = Request<
   RestaurantParams,
   Record<string, unknown>,
-  ReqBodyRestaurantData,
+  RequestBodyRestaurantData,
   RestaurantQuery
 >;
 
@@ -29,7 +29,7 @@ export type RestaurantParams = {
   restaurantId: string;
 };
 
-export type ReqBodyRestaurantData = Omit<
+export type RequestBodyRestaurantData = Omit<
   RestaurantStructure,
   "_id" | "visitDate"
 > & {

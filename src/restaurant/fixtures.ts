@@ -1,4 +1,4 @@
-import { ReqBodyRestaurantData } from "./controller/types.js";
+import { RequestBodyRestaurantData } from "./controller/types.js";
 import RestaurantStructure from "./types.js";
 
 export const losPollosHermanos: RestaurantStructure = {
@@ -80,7 +80,7 @@ export const jjsDinner: RestaurantStructure = {
   visitDate: new Date("2022-11-09"),
 };
 
-export const freddysBbqData: ReqBodyRestaurantData = {
+export const freddysBbqData: RequestBodyRestaurantData = {
   name: "Freddy's BBQ Joint",
   adress: "Washington D.C.",
   foodType: "Barbacoa",
@@ -169,7 +169,7 @@ export const notVisitedKrustyBurger: RestaurantStructure = {
   visitDate: new Date("2023-10-18"),
 };
 
-export const souvlakiExpressData: ReqBodyRestaurantData = {
+export const souvlakiExpressData: RequestBodyRestaurantData = {
   name: "Souvlaki Express",
   adress: "Atenas, Grecia",
   foodType: "Comida griega / Rápida",
@@ -190,7 +190,7 @@ export const souvlakiExpress: RestaurantStructure = {
   isVisited: false,
 };
 
-export const theLotusLanternData: ReqBodyRestaurantData = {
+export const theLotusLanternData: RequestBodyRestaurantData = {
   name: "The Lotus Lantern",
   adress: "Kyoto, Japón",
   foodType: "Fusión asiática",
