@@ -28,7 +28,7 @@ afterEach(async () => {
   await server.stop();
 });
 
-describe("Given the POST/posts endpoint", () => {
+describe("Given the POST/restaurants endpoint", () => {
   describe("When it receives a request with Souvlaki Express restaurant data", () => {
     test("Then it should respond with a 201 status code and Souvlaki Express restaurant", async () => {
       await Restaurant.create(losPollosHermanos, jjsDinner);
