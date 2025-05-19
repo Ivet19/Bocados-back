@@ -101,6 +101,30 @@ class RestaurantController implements RestaurantControllerStructure {
 
     res.status(statusCodes.CREATED).json({ restaurant: addedRestaurant });
   };
+
+  public deleteRestaurant = async (
+    req: RestaurantRequest,
+    res: RestaurantResponse,
+    next: NextFunction,
+  ): Promise<void> => {
+    const { restaurantId } = req.params;
+
+    const deletedRestaurant = await this.restaurantModel
+      .findOneAndDelete({ _id: restaurantId })
+      .exec();
+
+    if (!deletedRestaurant) {
+      const error = new ServerError(
+        statusCodes.NOT_FOUND,
+        "Restaurant not found",
+      );
+      next(error);
+
+      return;
+    }
+
+    res.status(200).json({ restaurant: deletedRestaurant });
+  };
 }
 
 export default RestaurantController;
