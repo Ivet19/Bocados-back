@@ -17,4 +17,10 @@ restaurantsRouter.patch(
 
 restaurantsRouter.post("/", restaurantController.addRestaurant);
 
+restaurantsRouter.delete(
+  "/:restaurantId",
+  handleIdValidation,
+  restaurantController.deleteRestaurant,
+);
+
 export default restaurantsRouter;
