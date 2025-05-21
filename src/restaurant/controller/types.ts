@@ -12,6 +12,18 @@ export interface RestaurantControllerStructure {
     res: RestaurantResponse,
     next: NextFunction,
   ) => Promise<void>;
+
+  addRestaurant: (
+    req: RestaurantRequest,
+    res: RestaurantResponse,
+    next: NextFunction,
+  ) => Promise<void>;
+
+  deleteRestaurant: (
+    req: RestaurantRequest,
+    res: RestaurantResponse,
+    next: NextFunction,
+  ) => Promise<void>;
 }
 
 export type RestaurantRequest = Request<
