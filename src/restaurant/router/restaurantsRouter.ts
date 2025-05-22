@@ -9,6 +9,12 @@ const restaurantController = new RestaurantController(Restaurant);
 
 restaurantsRouter.get("/", restaurantController.getRestaurants);
 
+restaurantsRouter.get(
+  "/:restaurantId",
+  handleIdValidation,
+  restaurantController.getRestaurantById,
+);
+
 restaurantsRouter.patch(
   "/visit-restaurant/:restaurantId",
   handleIdValidation,
