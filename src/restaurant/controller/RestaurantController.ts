@@ -39,6 +39,31 @@ class RestaurantController implements RestaurantControllerStructure {
       .json({ restaurants: restaurants, restaurantsTotal: restaurantsTotal });
   };
 
+  public getRestaurantById = async (
+    req: RestaurantRequest,
+    res: RestaurantResponse,
+    next: NextFunction,
+  ): Promise<void> => {
+    const { restaurantId } = req.params;
+
+    const foundRestaurant = await this.restaurantModel
+      .findById({ _id: restaurantId })
+      .exec();
+
+    if (!foundRestaurant) {
+      const error = new ServerError(
+        statusCodes.NOT_FOUND,
+        "Restaurant not found",
+      );
+
+      next(error);
+
+      return;
+    }
+
+    res.status(statusCodes.OK).json({ restaurant: foundRestaurant });
+  };
+
   public toggleRestaurantById = async (
     req: RestaurantRequest,
     res: RestaurantResponse,

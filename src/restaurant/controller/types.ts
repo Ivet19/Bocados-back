@@ -7,6 +7,12 @@ export interface RestaurantControllerStructure {
     res: RestaurantsResponse,
   ) => Promise<void>;
 
+  getRestaurantById: (
+    req: RestaurantRequest,
+    res: RestaurantResponse,
+    next: NextFunction,
+  ) => Promise<void>;
+
   toggleRestaurantById: (
     req: RestaurantRequest,
     res: RestaurantResponse,

@@ -40,13 +40,13 @@ describe("Given the DELETE/restaurants/123456789123456789123454 endpoint", () =>
         }),
       );
 
-      const dataBasePosts = await Restaurant.find();
-      expect(dataBasePosts).toHaveLength(1);
+      const dataBaseRestaurants = await Restaurant.find();
+      expect(dataBaseRestaurants).toHaveLength(1);
     });
   });
 });
 
-describe("Given the DELETE/posts/573561324567825367892345 non existing restaurant id endpoint", () => {
+describe("Given the DELETE/restaurants/573561324567825367892345 non existing restaurant id endpoint", () => {
   describe("When it receives a request", () => {
     test("Then it should respond with a 404 status code and a 'Restaurant not found' error message", async () => {
       await Restaurant.create(theLotusLantern, krustyBurger);
