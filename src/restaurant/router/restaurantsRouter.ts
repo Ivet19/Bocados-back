@@ -21,6 +21,12 @@ restaurantsRouter.patch(
   restaurantController.toggleRestaurantById,
 );
 
+restaurantsRouter.put(
+  "/modify-restaurant/:restaurantId",
+  handleIdValidation,
+  restaurantController.updateRestaurant,
+);
+
 restaurantsRouter.post("/", restaurantController.addRestaurant);
 
 restaurantsRouter.delete(
