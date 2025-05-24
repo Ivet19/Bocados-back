@@ -135,6 +135,37 @@ export const visitedBobsBurgers: RestaurantStructure = {
   isVisited: true,
 };
 
+export const krustyBurgerData: RequestBodyRestaurantData = {
+  name: "Krusty Burger",
+  adress: "Springfield, USA",
+  foodType: "Comida rápida",
+  imageUrl: "https://example.com/krusty-burger.jpg",
+  description:
+    "La hamburguesa preferida de Springfield. No esperes comida saludable, pero sí mucho sabor (y probablemente algo de sarcasmo).",
+  isVisited: true,
+  servingsAmount: "Generosa",
+  waitTime: "Mucho",
+  customerService: "Regular",
+  priceCategory: "Bajo",
+  rating: 3.8,
+};
+
+export const updatedKrustyBurger: RestaurantStructure = {
+  _id: "664371df9c0e9b2a1f7d88c7",
+  name: "Krusty Burger",
+  adress: "Springfield, USA",
+  foodType: "Comida rápida",
+  imageUrl: "https://example.com/krusty-burger.jpg",
+  description:
+    "La hamburguesa preferida de Springfield. No esperes comida saludable, pero sí mucho sabor (y probablemente algo de sarcasmo).",
+  isVisited: true,
+  servingsAmount: "Generosa",
+  waitTime: "Mucho",
+  customerService: "Regular",
+  priceCategory: "Bajo",
+  rating: 3.8,
+};
+
 export const krustyBurger: RestaurantStructure = {
   _id: "664371df9c0e9b2a1f7d88c7",
   name: "Krusty Burger",
@@ -199,8 +230,7 @@ export const theLotusLanternData: RequestBodyRestaurantData = {
     "Un rincón tranquilo donde la cocina japonesa se mezcla con sabores tailandeses. Ideal para una cena relajada y refinada.",
   isVisited: true,
   servingsAmount: "Normal",
-  waitTime: "Normal",
-  customerService: "Muy bueno",
+  customerService: "Regular",
   priceCategory: "Alto",
   rating: 4.7,
   visitDate: "2024-02-18",
@@ -220,6 +250,22 @@ export const theLotusLantern: RestaurantStructure = {
   customerService: "Muy bueno",
   priceCategory: "Alto",
   rating: 4.7,
+  visitDate: new Date("2024-02-18"),
+};
+
+export const updatedLotusLantern: RestaurantStructure = {
+  _id: "665000abc1234def56789001",
+  name: "The Lotus Lantern",
+  adress: "Kyoto, Japón",
+  foodType: "Fusión asiática",
+  imageUrl: "https://example.com/lotus-lantern.jpg",
+  description:
+    "Un rincón tranquilo donde la cocina japonesa se mezcla con sabores tailandeses. Ideal para una cena relajada y refinada.",
+  isVisited: true,
+  servingsAmount: "Normal",
+  customerService: "Regular",
+  priceCategory: "Alto",
+  rating: 3,
   visitDate: new Date("2024-02-18"),
 };
 
