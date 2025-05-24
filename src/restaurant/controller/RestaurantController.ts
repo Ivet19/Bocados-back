@@ -95,6 +95,36 @@ class RestaurantController implements RestaurantControllerStructure {
     res.status(statusCodes.OK).json({ restaurant: updatedRestaurant! });
   };
 
+  public updateRestaurant = async (
+    req: RestaurantRequest,
+    res: RestaurantResponse,
+    next: NextFunction,
+  ): Promise<void> => {
+    const restaurantData = req.body;
+    const { restaurantId } = req.params;
+
+    const restaurant = await this.restaurantModel.findById(restaurantId).exec();
+
+    if (!restaurant) {
+      const error = new ServerError(
+        statusCodes.NOT_FOUND,
+        "This restaurant doesn't exist",
+      );
+
+      next(error);
+
+      return;
+    }
+
+    const updatedRestaurant = await this.restaurantModel.findOneAndReplace(
+      { _id: restaurantId },
+      restaurantData,
+      { new: true },
+    );
+
+    res.status(statusCodes.OK).json({ restaurant: updatedRestaurant! });
+  };
+
   public addRestaurant = async (
     req: RestaurantRequest,
     res: RestaurantResponse,
