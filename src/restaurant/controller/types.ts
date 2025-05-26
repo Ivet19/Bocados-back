@@ -6,31 +6,26 @@ export interface RestaurantControllerStructure {
     req: RestaurantRequest,
     res: RestaurantsResponse,
   ) => Promise<void>;
-
   getRestaurantById: (
     req: RestaurantRequest,
     res: RestaurantResponse,
     next: NextFunction,
   ) => Promise<void>;
-
   toggleRestaurantById: (
     req: RestaurantRequest,
     res: RestaurantResponse,
     next: NextFunction,
   ) => Promise<void>;
-
   updateRestaurant: (
-    req: RestaurantRequest,
+    req: ModifiedRestaurantRequest,
     res: RestaurantResponse,
     next: NextFunction,
   ) => Promise<void>;
-
   addRestaurant: (
     req: RestaurantRequest,
     res: RestaurantResponse,
     next: NextFunction,
   ) => Promise<void>;
-
   deleteRestaurant: (
     req: RestaurantRequest,
     res: RestaurantResponse,
@@ -45,6 +40,15 @@ export type RestaurantRequest = Request<
   RestaurantQuery
 >;
 
+export type ModifiedRestaurantRequest = Request<
+  RestaurantParams,
+  Record<string, unknown>,
+  RequestBodyModifiedRestaurant,
+  RestaurantQuery
+>;
+
+export type IdRequest = Request<RestaurantParams>;
+
 export type RestaurantQuery = {
   page: string;
 };
@@ -57,6 +61,16 @@ export type RequestBodyRestaurantData = Omit<
   RestaurantStructure,
   "_id" | "visitDate"
 > & {
+  visitDate?: string;
+};
+
+export type RequestBodyModifiedRestaurant = { restaurant: ModifiedRestaurant };
+
+export type ModifiedRestaurant = Omit<
+  RestaurantStructure,
+  "_id" | "visitDate"
+> & {
+  id: string;
   visitDate?: string;
 };
 

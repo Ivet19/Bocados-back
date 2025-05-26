@@ -2,9 +2,10 @@ import { Model } from "mongoose";
 import { NextFunction } from "express";
 import {
   RestaurantControllerStructure,
-  RestaurantRequest,
   RestaurantsResponse,
   RestaurantResponse,
+  ModifiedRestaurantRequest,
+  RestaurantRequest,
 } from "./types.js";
 import statusCodes from "../../globals/statusCodes.js";
 import RestaurantStructure from "../types.js";
@@ -96,11 +97,10 @@ class RestaurantController implements RestaurantControllerStructure {
   };
 
   public updateRestaurant = async (
-    req: RestaurantRequest,
+    req: ModifiedRestaurantRequest,
     res: RestaurantResponse,
     next: NextFunction,
   ): Promise<void> => {
-    const restaurantData = req.body;
     const { restaurantId } = req.params;
 
     const restaurant = await this.restaurantModel.findById(restaurantId).exec();
@@ -116,9 +116,11 @@ class RestaurantController implements RestaurantControllerStructure {
       return;
     }
 
+    const { restaurant: modifiedRestaurant } = req.body;
+
     const updatedRestaurant = await this.restaurantModel.findOneAndReplace(
       { _id: restaurantId },
-      restaurantData,
+      modifiedRestaurant,
       { new: true },
     );
 
@@ -132,15 +134,10 @@ class RestaurantController implements RestaurantControllerStructure {
   ): Promise<void> => {
     const newRestaurantData = req.body;
 
-    const restaurants = await this.restaurantModel.find().exec();
+    const name = new RegExp(newRestaurantData.name, "i");
+    const restaurant = await this.restaurantModel.exists({ name }).exec();
 
-    if (
-      restaurants.some(
-        (restaurant) =>
-          restaurant.name.toLowerCase() ===
-          newRestaurantData.name.toLowerCase(),
-      )
-    ) {
+    if (restaurant) {
       const error = new ServerError(
         statusCodes.CONFLICT,
         "Restaurant already exists",

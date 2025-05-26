@@ -1,4 +1,7 @@
-import { RequestBodyRestaurantData } from "./controller/types.js";
+import {
+  ModifiedRestaurant,
+  RequestBodyRestaurantData,
+} from "./controller/types.js";
 import RestaurantStructure from "./types.js";
 
 export const losPollosHermanos: RestaurantStructure = {
@@ -166,6 +169,23 @@ export const updatedKrustyBurger: RestaurantStructure = {
   rating: 3.8,
 };
 
+export const modifiedKrustyBurger: ModifiedRestaurant = {
+  id: "664371df9c0e9b2a1f7d88c7",
+  name: "Krusty Burger",
+  adress: "Springfield, USA",
+  foodType: "Comida rápida",
+  imageUrl: "https://example.com/krusty-burger.jpg",
+  description:
+    "La hamburguesa preferida de Springfield. No esperes comida saludable, pero sí mucho sabor (y probablemente algo de sarcasmo).",
+  isVisited: true,
+  servingsAmount: "Poca",
+  waitTime: "Poco",
+  customerService: "Regular",
+  priceCategory: "Bajo",
+  rating: 3.8,
+  visitDate: "2023-10-18",
+};
+
 export const krustyBurger: RestaurantStructure = {
   _id: "664371df9c0e9b2a1f7d88c7",
   name: "Krusty Burger",
@@ -221,7 +241,8 @@ export const souvlakiExpress: RestaurantStructure = {
   isVisited: false,
 };
 
-export const theLotusLanternData: RequestBodyRestaurantData = {
+export const modifiedLotusLantern: ModifiedRestaurant = {
+  id: "665000abc1234def56789001",
   name: "The Lotus Lantern",
   adress: "Kyoto, Japón",
   foodType: "Fusión asiática",
@@ -231,6 +252,38 @@ export const theLotusLanternData: RequestBodyRestaurantData = {
   isVisited: true,
   servingsAmount: "Normal",
   customerService: "Regular",
+  priceCategory: "Alto",
+  rating: 4.7,
+  visitDate: "2024-02-18",
+};
+
+export const modifiedLotusLanternDto: RestaurantStructure = {
+  _id: "665000abc1234def56789001",
+  name: "The Lotus Lantern",
+  adress: "Kyoto, Japón",
+  foodType: "Fusión asiática",
+  imageUrl: "https://example.com/lotus-lantern.jpg",
+  description:
+    "Un rincón tranquilo donde la cocina japonesa se mezcla con sabores tailandeses. Ideal para una cena relajada y refinada.",
+  isVisited: true,
+  servingsAmount: "Normal",
+  customerService: "Regular",
+  priceCategory: "Alto",
+  rating: 4.7,
+  visitDate: new Date("2024-02-18"),
+};
+
+export const theLotusLanternData: RequestBodyRestaurantData = {
+  name: "The Lotus Lantern",
+  adress: "Kyoto, Japón",
+  foodType: "Fusión asiática",
+  imageUrl: "https://example.com/lotus-lantern.jpg",
+  description:
+    "Un rincón tranquilo donde la cocina japonesa se mezcla con sabores tailandeses. Ideal para una cena relajada y refinada.",
+  isVisited: true,
+  servingsAmount: "Normal",
+  waitTime: "Normal",
+  customerService: "Muy bueno",
   priceCategory: "Alto",
   rating: 4.7,
   visitDate: "2024-02-18",

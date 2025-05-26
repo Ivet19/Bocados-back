@@ -13,6 +13,8 @@ const handleErrors = (
   _next: NextFunction,
 ): void => {
   debug("Error:", error.message);
+  debug("Stack:", error.stack);
+
   res.status(error.statusCode ?? 500).json({
     error:
       error instanceof ServerError ? error.message : "Internal server error",

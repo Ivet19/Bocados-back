@@ -2,10 +2,10 @@ import { isValidObjectId } from "mongoose";
 import ServerError from "../../ServerError/ServerError.js";
 import statusCodes from "../../../globals/statusCodes.js";
 import { NextFunction, Response } from "express";
-import { RestaurantRequest } from "../../../restaurant/controller/types.js";
+import { IdRequest } from "../../../restaurant/controller/types.js";
 
 const handleIdValidation = (
-  req: RestaurantRequest,
+  req: IdRequest,
   _res: Response,
   next: NextFunction,
 ): void => {
