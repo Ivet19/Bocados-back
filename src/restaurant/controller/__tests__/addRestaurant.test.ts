@@ -33,10 +33,10 @@ describe("Given the addRestaurant method of RestaurantController", () => {
   describe("When it receives SouvLaki Express restaurant data", () => {
     const restaurantModel: Pick<
       Model<RestaurantStructure>,
-      "find" | "insertOne"
+      "exists" | "insertOne"
     > = {
-      find: jest.fn().mockReturnValue({
-        exec: jest.fn().mockResolvedValue(restaurantFixtures),
+      exists: jest.fn().mockReturnValue({
+        exec: jest.fn().mockResolvedValue(null),
       }),
       insertOne: jest.fn().mockResolvedValue(souvlakiExpressData),
     };
@@ -78,9 +78,9 @@ describe("Given the addRestaurant method of RestaurantController", () => {
 
         const restaurantModel: Pick<
           Model<RestaurantStructure>,
-          "find" | "insertOne"
+          "exists" | "insertOne"
         > = {
-          find: jest.fn().mockReturnValue({
+          exists: jest.fn().mockReturnValue({
             exec: jest.fn().mockResolvedValue(restaurantFixtures),
           }),
           insertOne: jest.fn().mockResolvedValue(freddysBbqData),

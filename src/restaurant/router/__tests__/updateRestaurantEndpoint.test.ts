@@ -3,7 +3,7 @@ import connectToDatabase from "../../../database/connectToDatabase.js";
 import mongoose from "mongoose";
 import request from "supertest";
 import Restaurant from "../../model/Restaurant.js";
-import { theLotusLantern, theLotusLanternData } from "../../fixtures.js";
+import { modifiedLotusLantern, theLotusLantern } from "../../fixtures.js";
 import app from "../../../server/app.js";
 import { RestaurantResBody } from "../../controller/types.js";
 import statusCodes from "../../../globals/statusCodes.js";
@@ -23,8 +23,8 @@ afterAll(async () => {
 });
 
 describe("Given the PUT /modify-restaurant/:restaurantId endpoint", () => {
-  describe("When it receives a request with X restaurant data and id", () => {
-    test("Then it should respond with a 200 status code and X updated restaurant", async () => {
+  describe("When it receives a request with The Lotus Lantern modified restaurant and its id", () => {
+    test("Then it should respond with a 200 status code and The Lotus Lantern updated restaurant", async () => {
       const expectedRestaurantName = "The Lotus Lantern";
 
       const restaurant = await Restaurant.create(theLotusLantern);
@@ -33,20 +33,22 @@ describe("Given the PUT /modify-restaurant/:restaurantId endpoint", () => {
 
       const response = await request(app)
         .put(`/restaurants/modify-restaurant/${restaurantId}`)
-        .send(theLotusLanternData);
+        .send({ restaurant: modifiedLotusLantern });
 
       const body = response.body as RestaurantResBody;
 
       expect(response.status).toBe(statusCodes.OK);
-      expect(body.restaurant).toMatchObject({ name: expectedRestaurantName });
+      expect(body.restaurant).toMatchObject({
+        name: expectedRestaurantName,
+      });
     });
   });
 
   describe("When it receives a request with a restaurant id that doesn't exist in the database", () => {
     test("Then it should respond with a 404 status code and a 'This restaurant doesn't exist' error message", async () => {
-      const response = await request(app).put(
-        `/restaurants/modify-restaurant/123456789012345678912345`,
-      );
+      const response = await request(app)
+        .put(`/restaurants/modify-restaurant/123456789012345678912345`)
+        .send({ restaurant: modifiedLotusLantern });
 
       const body = response.body as { error: string };
 

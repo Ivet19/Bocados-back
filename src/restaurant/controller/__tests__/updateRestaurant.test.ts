@@ -3,12 +3,12 @@ import { NextFunction } from "express";
 import statusCodes from "../../../globals/statusCodes.js";
 import {
   krustyBurger,
-  krustyBurgerData,
+  modifiedKrustyBurger,
+  modifiedLotusLantern,
   theLotusLantern,
-  theLotusLanternData,
   updatedLotusLantern,
 } from "../../fixtures.js";
-import { RestaurantRequest, RestaurantResponse } from "../types.js";
+import { ModifiedRestaurantRequest, RestaurantResponse } from "../types.js";
 import RestaurantStructure from "../../types.js";
 import RestaurantController from "../RestaurantController.js";
 import ServerError from "../../../server/ServerError/ServerError.js";
@@ -29,16 +29,16 @@ describe("Given the updateRestaurant method of restaurantController", () => {
     test("Then it should call the response's status method with 200 and The Lotus Lantern updated restaurant", async () => {
       const expectedStatusCode = statusCodes.OK;
 
-      const req: Pick<RestaurantRequest, "params" | "body"> = {
+      const req: Pick<ModifiedRestaurantRequest, "params" | "body"> = {
         params: { restaurantId: theLotusLantern._id },
-        body: theLotusLanternData,
+        body: { restaurant: modifiedLotusLantern },
       };
       const restaurantModel: Pick<
         Model<RestaurantStructure>,
         "findById" | "findOneAndReplace"
       > = {
         findById: jest.fn().mockReturnValue({
-          exec: jest.fn().mockResolvedValue(theLotusLanternData),
+          exec: jest.fn().mockResolvedValue(modifiedLotusLantern),
         }),
         findOneAndReplace: jest.fn().mockResolvedValue(updatedLotusLantern),
       };
@@ -47,7 +47,7 @@ describe("Given the updateRestaurant method of restaurantController", () => {
       );
 
       await restaurantController.updateRestaurant(
-        req as RestaurantRequest,
+        req as ModifiedRestaurantRequest,
         res as RestaurantResponse,
         next as NextFunction,
       );
@@ -66,9 +66,9 @@ describe("Given the updateRestaurant method of restaurantController", () => {
         "This restaurant doesn't exist",
       );
 
-      const req: Pick<RestaurantRequest, "params" | "body"> = {
+      const req: Pick<ModifiedRestaurantRequest, "params" | "body"> = {
         params: { restaurantId: krustyBurger._id },
-        body: krustyBurgerData,
+        body: { restaurant: modifiedKrustyBurger },
       };
       const restaurantModel: Pick<
         Model<RestaurantStructure>,
@@ -84,7 +84,7 @@ describe("Given the updateRestaurant method of restaurantController", () => {
       );
 
       await restaurantController.updateRestaurant(
-        req as RestaurantRequest,
+        req as ModifiedRestaurantRequest,
         res as RestaurantResponse,
         next as NextFunction,
       );

@@ -1,6 +1,6 @@
 import { Response, NextFunction } from "express";
 import statusCodes from "../../../globals/statusCodes.js";
-import { RestaurantRequest } from "../../../restaurant/controller/types.js";
+import { ModifiedRestaurantRequest } from "../../../restaurant/controller/types.js";
 import handleIdValidation from "./handleIdValidation.js";
 import ServerError from "../../ServerError/ServerError.js";
 
@@ -16,12 +16,12 @@ describe("Given the handleValidationId middleware", () => {
         "Not valid id",
       );
 
-      const req: Pick<RestaurantRequest, "params"> = {
+      const req: Pick<ModifiedRestaurantRequest, "params"> = {
         params: { restaurantId: "12345678910121316171819x" },
       };
 
       await handleIdValidation(
-        req as RestaurantRequest,
+        req as ModifiedRestaurantRequest,
         res as Response,
         next as NextFunction,
       );
