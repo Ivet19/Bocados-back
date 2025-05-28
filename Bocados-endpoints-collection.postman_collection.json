@@ -27,10 +27,10 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "https://bocados-back.onrender.com/restaurants",
+          "raw": "https://bocados-back.onrender.com/restaurants/",
           "protocol": "https",
           "host": ["bocados-back", "onrender", "com"],
-          "path": ["restaurants"]
+          "path": ["restaurants", ""]
         },
         "description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
       },
@@ -50,6 +50,84 @@
             "visit-restaurant",
             "681ba8bd4f458025d2570e39"
           ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "POST /restaurants",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n        \"name\": \"Lluis i tu\",\n        \"adress\": \"C/de la Palla, 26\",\n        \"foodType\": \"Tapas y plaatillos\",\n        \"imageUrl\": \"https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1c/ea/8b/d4/caption.jpg?w=1400&h=-1&s=1\",\n        \"description\": \"Lugar tranquilo y cálido donde hacen unas tapas y platillos diferentes y muy ricos.\",\n        \"isVisited\": true,\n        \"rating\": 4,\n        \"visitDate\": \"2024-12-03T00:00:00.000Z\"\n    }",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://bocados-back.onrender.com/restaurants",
+          "protocol": "https",
+          "host": ["bocados-back", "onrender", "com"],
+          "path": ["restaurants"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "PUT /restaurants/modify-restaurant/:restaurantId",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{ \"restaurant\":\n    {\n    \"id\": \"681ba7c94f458025d2570e2c\",\n    \"name\": \"Candela en Rama\",\n    \"adress\": \"C/Blai 8, Poble-sec\",\n    \"foodType\": \"Andaluza\",\n    \"imageUrl\": \"https://i.ibb.co/s95yb4nx/candela.webp\",\n    \"description\": \"Candela en Rama ofrece una experiencia auténtica del sur de España en el corazón de Barcelona. El local es pequeño, con un ambiente informal y familiar. Su especialidad son los platos típicos andaluces como el salmorejo, el cazón en adobo o las berenjenas con miel. Las raciones son generosas y el precio bastante asequible. El servicio es amable, aunque a veces un poco lento por la afluencia de gente. Es una gran opción para una comida sabrosa sin pretensiones.\",\n    \"isVisited\": true,\n    \"servingsAmount\": \"Generosa\",\n    \"waitTime\": \"Normal\",\n    \"customerService\": \"Bueno\",\n    \"priceCategory\": \"Medio\",\n    \"rating\": 4.2,\n    \"visitDate\": \"2024-10-02T00:00:00.000Z\"\n    }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://bocados-back.onrender.com/restaurants/modify-restaurant/681ba7c94f458025d2570e2c",
+          "protocol": "https",
+          "host": ["bocados-back", "onrender", "com"],
+          "path": [
+            "restaurants",
+            "modify-restaurant",
+            "681ba7c94f458025d2570e2c"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "DELETE /restaurants/:restaurantId",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "https://bocados-back.onrender.com/restaurants/6836132a406c702bb6541ecf",
+          "protocol": "https",
+          "host": ["bocados-back", "onrender", "com"],
+          "path": ["restaurants", "6836132a406c702bb6541ecf"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "GET /restaurants/:restaurantId",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://bocados-back.onrender.com/restaurants/681ba8bd4f458025d2570e39",
+          "protocol": "https",
+          "host": ["bocados-back", "onrender", "com"],
+          "path": ["restaurants", "681ba8bd4f458025d2570e39"]
         }
       },
       "response": []
